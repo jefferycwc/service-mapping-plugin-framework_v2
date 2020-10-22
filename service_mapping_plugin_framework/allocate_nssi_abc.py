@@ -247,6 +247,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             url = nm_url + 'NetworkSliceSubnet/*/'
             properties = content['definitions']['networkSliceSubnet']['properties']
             print('properties nsifo:{}'.format(properties['nsInfo']))
+            null = None
             data = {
                 "referenceObjectInstance": "",
                 "attributeListIn": {
@@ -255,6 +256,14 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     "operationalState": properties['operationalState'],
                     "administrativeState": properties['administrativeState'],
                     "nsInfo": properties['nsInfo'],
+                    "mongodb": null,
+                    "nrfd": null,
+                    "amfd":null,
+                    "udrd":null,
+                    "pcfd":null,
+                    "udmd":null,
+                    "nssfd":null,
+                    "ausfd":null,
                     "sliceProfileList": [kwargs['profile']['id']]
                 }
             }
