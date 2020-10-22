@@ -13,6 +13,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         self.NFVO_URL = settings.NFVO_URL.format(nfvo_host)
         self.SUBSCRIPTION_HOST = settings.SUBSCRIPTION_HOST.format(subscription_host)
         self.nsinfo = dict()
+        self.vnfinfo = dict()
         self.nssiId = str()
         self.content = dict()
         self.moi_config = dict()
@@ -478,25 +479,27 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             }'''
             data = {
                 "modificationList": [
-                    [
-                        "nrf",
-                        "amf",
-                        "smf",
-                        "udr",
-                        "pcf",
-                        "udm",
-                        "nssf",
-                        "ausf"
+                    [   
+                        "mongodb",
+                        "nrfd",
+                        "amfd",
+                        "smfd",
+                        "udrd",
+                        "pcfd",
+                        "udmd",
+                        "nssfd",
+                        "ausfd"
                     ],
-                    [
-                        self.vnfinfo['nrf'],
-                        self.vnfinfo['amf'],
-                        self.vnfinfo['smf'],
-                        self.vnfinfo['udr'],
-                        self.vnfinfo['pcf'],
-                        self.vnfinfo['udm'],
-                        self.vnfinfo['nssf'],
-                        self.vnfinfo['ausf']
+                    [   
+                        self.vnfinfo['mongodb'],
+                        self.vnfinfo['nrfd'],
+                        self.vnfinfo['amfd'],
+                        self.vnfinfo['smfd'],
+                        self.vnfinfo['udrd'],
+                        self.vnfinfo['pcfd'],
+                        self.vnfinfo['udmd'],
+                        self.vnfinfo['nssfd'],
+                        self.vnfinfo['ausfd']
                     ],
                     "REPLACE"
                 ]
