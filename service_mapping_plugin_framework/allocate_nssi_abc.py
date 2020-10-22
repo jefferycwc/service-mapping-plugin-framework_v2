@@ -246,6 +246,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             print('Create NetworkSliceSubnet MOI ...')
             url = nm_url + 'NetworkSliceSubnet/*/'
             properties = content['definitions']['networkSliceSubnet']['properties']
+            print('properties nsifo:{}'.format(properties['nsInfo']))
             data = {
                 "referenceObjectInstance": "",
                 "attributeListIn": {
