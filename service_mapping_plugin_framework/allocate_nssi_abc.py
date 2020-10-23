@@ -476,7 +476,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             # Modify Slice MOI
             url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
-            self.nsinfo['id'] = 123
+            #self.nsinfo['id'] = 123
             data = {
                 "modificationList": [
                     [
