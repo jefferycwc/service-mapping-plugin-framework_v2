@@ -18,6 +18,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         self.content = dict()
         self.moi_config = dict()
         self.parameter = parameter
+        self.random_uuid = str()
 
     def get_nsst(self):
         print(os.path.join(settings.DATA_PATH, 'NRM', self.parameter['slice_template']))
@@ -468,8 +469,9 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
             #self.nsinfo['id'] = 123
-            random_uuid=str(uuid.uuid4())
-            print('random_uuid:{}'.format(random_uuid))
+            
+            #random_uuid=str(uuid.uuid4())
+            print('random_uuid:{}'.format(self.random_uuid))
             data = {
                 "modificationList": [
                     [
@@ -477,7 +479,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     [
                         #self.nsinfo['id']
-                        random_uuid
+                        self.random_uuid
                     ],
                     "REPLACE"
                 ]
