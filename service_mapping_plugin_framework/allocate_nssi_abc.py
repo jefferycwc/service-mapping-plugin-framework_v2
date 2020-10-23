@@ -256,14 +256,14 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     "operationalState": properties['operationalState'],
                     "administrativeState": properties['administrativeState'],
                     "nsInfo": properties['nsInfo'],
-                    "mongodb": null,
+                    '''"mongodb": null,
                     "nrfd": null,
                     "amfd":null,
                     "udrd":null,
                     "pcfd":null,
                     "udmd":null,
                     "nssfd":null,
-                    "ausfd":null,
+                    "ausfd":null,'''
                     "sliceProfileList": [kwargs['profile']['id']]
                 }
             }
