@@ -487,7 +487,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     "REPLACE"
                 ]
             }'''
-            data = {
+            '''data = {
                 "modificationList": [
                     [   
                         "mongodb",
@@ -513,7 +513,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     "REPLACE"
                 ]
-            }
+            }'''
             payload = {'scope': str(scope)}
             modify_moi = requests.patch(url, data=json.dumps(data),
                                         params=payload, headers=settings.HEADERS)
