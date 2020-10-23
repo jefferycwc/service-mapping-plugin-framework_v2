@@ -338,7 +338,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                 # TODO gitlab feature/deallocateNSSI API in 250 row
                 # self.listen_on_vnf_package_subscriptions()
             break
-        self.set_vnf_info()
+        #self.set_vnf_info()
 
     def ns_instance_instantiation(self):
         for root, directory, file in os.walk(
@@ -474,7 +474,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             print('Create NsInfo moi status: {}'.format(create_nsinfo_moi.status_code))
 
             # Modify Slice MOI
-            url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+            '''url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
             self.nsinfo['id'] = 123
             data = {
@@ -488,7 +488,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     "REPLACE"
                 ]
             }
-            '''data = {
+            data = {
                 "modificationList": [
                     [   
                         "mongodb",
@@ -514,11 +514,11 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     "REPLACE"
                 ]
-            }'''
+            }
             payload = {'scope': str(scope)}
             modify_moi = requests.patch(url, data=json.dumps(data),
                                         params=payload, headers=settings.HEADERS)
-            print("Modify MOI status: {}".format(modify_moi.status_code))
+            print("Modify MOI status: {}".format(modify_moi.status_code))'''
 
         # Reorganization Slice Response
         '''scope = ["BASE_NTH_LEVEL", 2]
@@ -590,6 +590,6 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             print('Create procedure...')
             self.create_moi()
             self.nf_provisioning()
-            #self.ns_instance_instantiation()
+            self.ns_instance_instantiation()
             self.coordinate_tn_manager()
             self.update_moi()
