@@ -546,6 +546,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
         get_moi = requests.get(url, params=payload, headers=settings.HEADERS)
         self.moi_config = get_moi.json()
+        print(self.moi_config)
         self.moi_config['nSSIId'] = \
             self.moi_config['attributeListOut'][0].pop('nssiId')
         if self.moi_config['attributeListOut'][0]['nsInfo']['mongodb']:
