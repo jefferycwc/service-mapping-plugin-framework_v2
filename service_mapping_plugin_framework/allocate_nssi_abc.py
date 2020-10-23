@@ -471,7 +471,8 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             #self.nsinfo['id'] = 123
             
             #random_uuid=str(uuid.uuid4())
-            print('random_uuid:{}'.format(self.random_uuid))
+            #print('random_uuid:{}'.format(self.random_uuid))
+            print('ns id: {}'.format(self.nsinfo['id']))
             data = {
                 "modificationList": [
                     [
