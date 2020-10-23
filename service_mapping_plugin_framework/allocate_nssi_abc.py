@@ -478,8 +478,8 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                         "nsInfo"
                     ],
                     [
-                        #self.nsinfo['id']
-                        self.random_uuid
+                        self.nsinfo['id']
+                        #self.random_uuid
                     ],
                     "REPLACE"
                 ]
