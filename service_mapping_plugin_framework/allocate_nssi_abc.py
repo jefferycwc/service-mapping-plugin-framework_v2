@@ -464,8 +464,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             requests.patch(url, data=json.dumps(data), params=payload, headers=settings.HEADERS)
         else:
             # Create NsInfo MOI
-            #url = self.NM_URL + "NsInfo/*/"
-            url = self.NM_URL + "NsInfo/{}/".format(self.nssiId)
+            url = self.NM_URL + "NsInfo/*/"
             data = {
                 "referenceObjectInstance": "",
                 "attributeListIn": self.nsinfo
