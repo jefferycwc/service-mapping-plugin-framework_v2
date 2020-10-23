@@ -474,9 +474,9 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             print('Create NsInfo moi status: {}'.format(create_nsinfo_moi.status_code))
 
             # Modify Slice MOI
-            url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+            '''url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
-            '''data = {
+            data = {
                 "modificationList": [
                     [
                         "nsInfo"
@@ -486,8 +486,8 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     "REPLACE"
                 ]
-            }'''
-            '''data = {
+            }
+            data = {
                 "modificationList": [
                     [   
                         "mongodb",
@@ -513,11 +513,11 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     "REPLACE"
                 ]
-            }'''
+            }
             payload = {'scope': str(scope)}
             modify_moi = requests.patch(url, data=json.dumps(data),
                                         params=payload, headers=settings.HEADERS)
-            print("Modify MOI status: {}".format(modify_moi.status_code))
+            print("Modify MOI status: {}".format(modify_moi.status_code))'''
 
         # Reorganization Slice Response
         '''scope = ["BASE_NTH_LEVEL", 2]
@@ -540,7 +540,43 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             self.moi_config['attributeListOut'][0]['nsInfo']['_links'] = \
                 eval(self.moi_config['attributeListOut'][0]['nsInfo']['_links'])
         print("Slice MOI:", self.moi_config)'''
-
+        #modify
+        scope = ["BASE_NTH_LEVEL", 2]
+        payload = {'scope': str(scope)}
+        url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+        get_moi = requests.get(url, params=payload, headers=settings.HEADERS)
+        self.moi_config = get_moi.json()
+        self.moi_config['nSSIId'] = \
+            self.moi_config['attributeListOut'][0].pop('nssiId')
+        if self.moi_config['attributeListOut'][0]['nsInfo']['mongodb']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['mongodb'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['mongodb'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['nrfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['nrfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['nrfd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['amfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['amfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['amfd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['smfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['smfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['smfd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['udrd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['udrd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['udrd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['pcfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['pcfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['pcfd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['udmd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['udmd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['udmd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['nssfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['nssfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['nssfd'])
+        if self.moi_config['attributeListOut'][0]['nsInfo']['ausfd']:
+            self.moi_config['attributeListOut'][0]['nsInfo']['ausfd'] = \
+                eval(self.moi_config['attributeListOut'][0]['nsInfo']['ausfd'])
+        print("Slice MOI:", self.moi_config)
+        #modify
     def allocate_nssi(self):
         self.get_nsst()
         if self.parameter['use_existed']:
