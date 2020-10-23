@@ -474,8 +474,9 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             print('Create NsInfo moi status: {}'.format(create_nsinfo_moi.status_code))
 
             # Modify Slice MOI
-            '''url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+            url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
+            self.nsinfo['id'] = '123'
             data = {
                 "modificationList": [
                     [
@@ -487,7 +488,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     "REPLACE"
                 ]
             }
-            data = {
+            '''data = {
                 "modificationList": [
                     [   
                         "mongodb",
@@ -513,11 +514,11 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
                     ],
                     "REPLACE"
                 ]
-            }
+            }'''
             payload = {'scope': str(scope)}
             modify_moi = requests.patch(url, data=json.dumps(data),
                                         params=payload, headers=settings.HEADERS)
-            print("Modify MOI status: {}".format(modify_moi.status_code))'''
+            print("Modify MOI status: {}".format(modify_moi.status_code))
 
         # Reorganization Slice Response
         '''scope = ["BASE_NTH_LEVEL", 2]
