@@ -543,11 +543,12 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         #modify
         scope = ["BASE_NTH_LEVEL", 2]
         payload = {'scope': str(scope)}
-        url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+        #url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+        url = self.NM_URL + "NsInfo/{}/".format(self.nssiId)
         get_moi = requests.get(url, params=payload, headers=settings.HEADERS)
         self.moi_config = get_moi.json()
         print(self.moi_config)
-        self.moi_config['nSSIId'] = \
+        '''self.moi_config['nSSIId'] = \
             self.moi_config['attributeListOut'][0].pop('nssiId')
         if self.moi_config['attributeListOut'][0]['nsInfo']['mongodb']:
             self.moi_config['attributeListOut'][0]['nsInfo']['mongodb'] = \
@@ -576,7 +577,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         if self.moi_config['attributeListOut'][0]['nsInfo']['ausfd']:
             self.moi_config['attributeListOut'][0]['nsInfo']['ausfd'] = \
                 eval(self.moi_config['attributeListOut'][0]['nsInfo']['ausfd'])
-        print("Slice MOI:", self.moi_config)
+        print("Slice MOI:", self.moi_config)'''
         #modify
     def allocate_nssi(self):
         self.get_nsst()
