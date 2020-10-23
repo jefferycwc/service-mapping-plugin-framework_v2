@@ -476,7 +476,7 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             # Modify Slice MOI
             url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
-            self.nsinfo['id'] = '123'
+            self.nsinfo['id'] = 123
             data = {
                 "modificationList": [
                     [
@@ -544,8 +544,8 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
         #modify
         scope = ["BASE_NTH_LEVEL", 2]
         payload = {'scope': str(scope)}
-        #url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
-        url = self.NM_URL + "NsInfo/{}/".format(self.nssiId)
+        url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
+        #url = self.NM_URL + "NsInfo/{}/".format(self.nssiId)
         get_moi = requests.get(url, params=payload, headers=settings.HEADERS)
         self.moi_config = get_moi.json()
         print(self.moi_config)
