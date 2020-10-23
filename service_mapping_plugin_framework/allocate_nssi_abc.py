@@ -2,7 +2,7 @@ import abc
 import json
 import os
 import requests
-
+import uuid
 from service_mapping_plugin_framework import settings
 
 
@@ -468,13 +468,15 @@ class AllocateNSSIabc(metaclass=abc.ABCMeta):
             url = self.NM_URL + "NetworkSliceSubnet/{}/".format(self.nssiId)
             scope = ["BASE_NTH_LEVEL", 0]
             #self.nsinfo['id'] = 123
+            random_uuid=uuid.uuid4()
             data = {
                 "modificationList": [
                     [
                         "nsInfo"
                     ],
                     [
-                        self.nsinfo['id']
+                        #self.nsinfo['id']
+                        random_uuid
                     ],
                     "REPLACE"
                 ]
